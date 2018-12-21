@@ -1,0 +1,42 @@
+from tkinter import *
+
+
+mainWindow = Tk()
+
+left_amount, middle_amount, right_amount = (0, 0, 0)
+
+
+def left_click(event):
+    global left_amount
+    print("LEFT")
+    print("------")
+    left_amount += 1
+
+
+def middle_click(event):
+    global middle_amount
+    print("MIDDLE")
+    print("------")
+    middle_amount += 1
+
+
+def right_click(event):
+    global right_amount
+    print("RIGHT")
+    print("------")
+    right_amount += 1
+
+
+def print_amount():
+    print("LEFT: {}\nMIDDLE: {}\nRIGHT: {}\n------".format(left_amount, middle_amount, right_amount))
+
+
+button_01 = Button(mainWindow, text="Amounts", command=print_amount)
+button_01.pack(side=LEFT, fill=Y)
+frame = Frame(mainWindow, width=200, height=200)
+frame.bind("<Button-1>", left_click)
+frame.bind("<Button-2>", middle_click)
+frame.bind("<Button-3>", right_click)
+frame.pack()
+
+mainWindow.mainloop()
